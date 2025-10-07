@@ -55,3 +55,4 @@ Thumbs.db
 *.dll
 *.exe
 *.pdb
+.fake
