@@ -40,7 +40,6 @@ public class CarsController : ControllerBase
         var car = _cars.FirstOrDefault(c => c.Id == id);
         if (car == null)
             return NotFound();
-        
         return Ok(car);
     }
 
