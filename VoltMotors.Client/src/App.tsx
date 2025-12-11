@@ -4,15 +4,34 @@ import Cars from './pages/Cars/Cars';
 import './App.css';
 
 function App() {
+  const navLinks = [
+    { path: '/cars', label: 'CARS' },
+    { path: '/about', label: 'ABOUT' }
+  ];
+
   return (
     <BrowserRouter>
       <div className="app">
         <nav className="navbar">
-          <Link to="/" className="logo">VoltMotors</Link>
+          <Link to="/" className="nav-brand">
+            <span className="brand-icon">⚡</span>
+            <span className="brand-text">
+              <span className="brand-volt">VOLT</span>
+              <span className="brand-motors">MOTORS</span>
+            </span>
+          </Link>
+
           <div className="nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/cars">Cars</Link>
-            <Link to="/about">About</Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="nav-link"
+              >
+                <span className="nav-link-text">{link.label}</span>
+                <span className="nav-link-glow"></span>
+              </Link>
+            ))}
           </div>
         </nav>
 

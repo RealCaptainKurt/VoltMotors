@@ -13,18 +13,54 @@ public class CarsController : ControllerBase
         new Car
         {
             Id = Guid.NewGuid(),
-            Model = "VoltSport X1",
-            Year = 2024,
-            Price = 45000,
-            Description = "High-performance electric sports car"
+            Model = "NEXUS X1",
+            Tagline = "Raw power meets neon streets",
+            Description = "The NEXUS X1 redefines electric performance with its quantum-core drivetrain and reactive armor plating. Built for the urban sprawl, engineered for tomorrow's drivers.",
+            Horsepower = 1000,
+            Range = 500,
+            TopSpeed = 200,
+            ZeroToSixty = 2.1,
+            Price = 89000,
+            Year = 2025
         },
         new Car
         {
             Id = Guid.NewGuid(),
-            Model = "VoltSedan S3",
-            Year = 2024,
-            Price = 35000,
-            Description = "Luxury electric sedan"
+            Model = "CIPHER GT",
+            Tagline = "Stealth in motion",
+            Description = "The CIPHER GT combines sleek aerodynamics with military-grade tech. Silent running mode and AI-assisted handling make this the ultimate night runner.",
+            Horsepower = 850,
+            Range = 450,
+            TopSpeed = 185,
+            ZeroToSixty = 2.8,
+            Price = 72000,
+            Year = 2025
+        },
+        new Car
+        {
+            Id = Guid.NewGuid(),
+            Model = "VOLT CRUISER",
+            Tagline = "Command the highway",
+            Description = "Engineered for long-haul dominance, the VOLT CRUISER features extended-range quantum batteries and adaptive suspension for maximum comfort at maximum velocity.",
+            Horsepower = 650,
+            Range = 600,
+            TopSpeed = 160,
+            ZeroToSixty = 3.5,
+            Price = 65000,
+            Year = 2025
+        },
+        new Car
+        {
+            Id = Guid.NewGuid(),
+            Model = "APEX RUNNER",
+            Tagline = "Velocity unleashed",
+            Description = "Track-ready performance meets street legality. The APEX RUNNER's neural-link control system responds to your thoughts before your hands move.",
+            Horsepower = 1200,
+            Range = 400,
+            TopSpeed = 220,
+            ZeroToSixty = 1.9,
+            Price = 125000,
+            Year = 2025
         }
     };
 
@@ -50,9 +86,15 @@ public class CarsController : ControllerBase
         {
             Id = Guid.NewGuid(),
             Model = dto.Model,
-            Year = dto.Year,
+            Tagline = dto.Tagline,
+            Description = dto.Description,
+            ImageUrl = dto.ImageUrl,
+            Horsepower = dto.Horsepower,
+            Range = dto.Range,
+            TopSpeed = dto.TopSpeed,
+            ZeroToSixty = dto.ZeroToSixty,
             Price = dto.Price,
-            Description = dto.Description
+            Year = dto.Year
         };
 
         _cars.Add(car);
@@ -67,9 +109,15 @@ public class CarsController : ControllerBase
             return NotFound();
 
         car.Model = dto.Model;
-        car.Year = dto.Year;
-        car.Price = dto.Price;
+        car.Tagline = dto.Tagline;
         car.Description = dto.Description;
+        car.ImageUrl = dto.ImageUrl;
+        car.Horsepower = dto.Horsepower;
+        car.Range = dto.Range;
+        car.TopSpeed = dto.TopSpeed;
+        car.ZeroToSixty = dto.ZeroToSixty;
+        car.Price = dto.Price;
+        car.Year = dto.Year;
 
         return NoContent();
     }
