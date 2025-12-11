@@ -1,42 +1,198 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  background: #0a0a0f;
+  color: #ffffff;
+}
+
+main {
+  min-height: calc(100vh - 80px);
+}
+
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.1);
+}
+
+/* Brand/Logo Section */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+}
+
+.nav-brand:hover .brand-icon {
+  text-shadow:
+    0 0 20px #00ffff,
+    0 0 40px #00ffff,
+    0 0 60px #0080ff;
+  transform: scale(1.1);
+}
+
+.brand-icon {
+  font-size: 2.5rem;
+  text-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff;
+  transition: all 0.3s ease;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-volt {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.3rem;
+  color: #00ffff;
+  text-shadow:
+    0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.brand-motors {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5rem;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.15rem;
+  color: #00ffff;
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.nav-link-text {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-link-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-link:hover {
+  background: rgba(0, 255, 255, 0.15);
+  border-color: #00ffff;
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.4),
+    inset 0 0 20px rgba(0, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-link:hover .nav-link-glow {
+  left: 100%;
+}
+
+.nav-link:active {
+  transform: translateY(0);
+}
+
+/* Footer Styles */
+.footer {
+  background: rgba(10, 10, 15, 0.95);
+  border-top: 2px solid rgba(0, 255, 255, 0.3);
   padding: 2rem;
   text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.footer p {
+  margin: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1.5rem;
+    height: 70px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .brand-volt {
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .brand-motors {
+    font-size: 0.75rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .brand-icon {
+    font-size: 2rem;
+  }
+
+  .nav-links {
+    gap: 0.3rem;
+  }
+
+  .nav-link {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 1rem;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .brand-text {
+    display: none;
+  }
 
-.read-the-docs {
-  color: #888;
+  .nav-link {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.75rem;
+  }
 }

@@ -11,7 +11,9 @@ builder.Services.AddCors(options =>
         "DevPolicy",
         policy =>
         {
-            policy.WithOrigins("https://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+            policy.WithOrigins("https://localhost:5173", "http://localhost:5173")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
         });
 });
 
@@ -23,8 +25,11 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.UseCors("DevPolicy");
 }
+else
+{
+    app.UseHttpsRedirection();
+}
 
-app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
