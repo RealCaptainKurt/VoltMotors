@@ -16,6 +16,7 @@ public class CarsController : ControllerBase
             Model = "NEXUS X1",
             Tagline = "Raw power meets neon streets",
             Description = "The NEXUS X1 redefines electric performance with its quantum-core drivetrain and reactive armor plating. Built for the urban sprawl, engineered for tomorrow's drivers.",
+            ImageUrl = "/src/assets/photos/Gemini_Air.png",
             Horsepower = 1000,
             Range = 500,
             TopSpeed = 200,
@@ -29,6 +30,7 @@ public class CarsController : ControllerBase
             Model = "CIPHER GT",
             Tagline = "Stealth in motion",
             Description = "The CIPHER GT combines sleek aerodynamics with military-grade tech. Silent running mode and AI-assisted handling make this the ultimate night runner.",
+            ImageUrl = "/src/assets/photos/Gemini_Sedan_1.png",
             Horsepower = 850,
             Range = 450,
             TopSpeed = 185,
@@ -42,6 +44,7 @@ public class CarsController : ControllerBase
             Model = "VOLT CRUISER",
             Tagline = "Command the highway",
             Description = "Engineered for long-haul dominance, the VOLT CRUISER features extended-range quantum batteries and adaptive suspension for maximum comfort at maximum velocity.",
+            ImageUrl = "/src/assets/photos/Gemini_SUV_1.png",
             Horsepower = 650,
             Range = 600,
             TopSpeed = 160,
@@ -55,11 +58,40 @@ public class CarsController : ControllerBase
             Model = "APEX RUNNER",
             Tagline = "Velocity unleashed",
             Description = "Track-ready performance meets street legality. The APEX RUNNER's neural-link control system responds to your thoughts before your hands move.",
+            ImageUrl = "/src/assets/photos/Gemini_Sedan_2.png",
             Horsepower = 1200,
             Range = 400,
             TopSpeed = 220,
             ZeroToSixty = 1.9,
             Price = 125000,
+            Year = 2025
+        },
+        new Car
+        {
+            Id = Guid.NewGuid(),
+            Model = "TITAN HAULER",
+            Tagline = "Unstoppable force",
+            Description = "The TITAN HAULER brings electric power to the working class. With massive torque and unbreakable cyber-steel construction, nothing stands in your way.",
+            ImageUrl = "/src/assets/photos/Gemini_Truck.png",
+            Horsepower = 800,
+            Range = 550,
+            TopSpeed = 140,
+            ZeroToSixty = 4.2,
+            Price = 78000,
+            Year = 2025
+        },
+        new Car
+        {
+            Id = Guid.NewGuid(),
+            Model = "PHANTOM SUV",
+            Tagline = "Luxury meets rebellion",
+            Description = "The PHANTOM SUV delivers executive comfort with street warrior capabilities. Adaptive terrain systems and reinforced chassis make every journey an adventure.",
+            ImageUrl = "/src/assets/photos/Gemini_SUV_2.png",
+            Horsepower = 720,
+            Range = 520,
+            TopSpeed = 170,
+            ZeroToSixty = 3.8,
+            Price = 95000,
             Year = 2025
         }
     };
