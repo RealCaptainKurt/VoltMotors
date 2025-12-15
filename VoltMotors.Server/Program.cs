@@ -1,21 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(
-        "DevPolicy",
-        policy =>
-        {
-            policy.WithOrigins("https://localhost:5173", "http://localhost:5173")
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
-});
 
 var app = builder.Build();
 
@@ -23,13 +10,20 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.UseCors("DevPolicy");
 }
 else
 {
     app.UseHttpsRedirection();
 }
 
+// Enable serving static files
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+// API routes
 app.MapControllers();
+
+// SPA fallback - serve index.html for all non-API routes
+app.MapFallbackToFile("index.html");
 
 app.Run();

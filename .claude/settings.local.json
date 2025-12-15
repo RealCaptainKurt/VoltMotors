@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(powershell:*)",
+      "Bash(cmd /c build-frontend.cmd:*)",
+      "Bash(npm install)",
+      "Bash(dir:*)"
+    ]
+  }
+}
