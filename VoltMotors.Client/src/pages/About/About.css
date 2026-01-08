@@ -1,0 +1,262 @@
+.about {
+  background: #0a0a0f;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.about-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+  padding-top: 80px;
+}
+
+.neon-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.page-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title-line {
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  color: #00ffff;
+  font-weight: 300;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.title-name {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 0.3rem;
+  color: #ffffff;
+  text-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #0080ff;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  letter-spacing: 0.3rem;
+  color: #888;
+  margin-top: 1rem;
+  font-weight: 300;
+}
+
+/* Story Section */
+.story-section {
+  padding: 6rem 2rem;
+  background: #0f0f1a;
+}
+
+.story-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.chapter {
+  margin-bottom: 5rem;
+  position: relative;
+  padding-left: 6rem;
+}
+
+.chapter-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(0, 255, 255, 0.1);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.chapter-title {
+  font-size: 2rem;
+  color: #00ffff;
+  letter-spacing: 0.3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+.chapter-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #d0d0d0;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.chapter.memorial {
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  padding: 3rem;
+  padding-left: 6rem;
+  clip-path: polygon(0% 2%, 2% 0%, 100% 0%, 100% 98%, 98% 100%, 0% 100%);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 128, 255, 0.05));
+  box-shadow:
+    0 0 30px rgba(0, 255, 255, 0.2),
+    inset 0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.memorial-quote {
+  display: block;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #00ffff;
+  margin-top: 2rem;
+  padding: 2rem;
+  border-left: 4px solid #00ffff;
+  background: rgba(0, 255, 255, 0.05);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.quote-author {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-style: normal;
+  color: #888;
+  text-align: right;
+}
+
+/* Values Section */
+.values-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0f 100%);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #00ffff;
+  letter-spacing: 0.3rem;
+  margin-bottom: 4rem;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  font-weight: 900;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.value-card {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 128, 255, 0.05));
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  padding: 2rem;
+  text-align: center;
+  clip-path: polygon(0% 5%, 5% 0%, 100% 0%, 100% 95%, 95% 100%, 0% 100%);
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  border-color: #00ffff;
+  box-shadow:
+    0 0 30px rgba(0, 255, 255, 0.4),
+    inset 0 0 30px rgba(0, 255, 255, 0.1);
+  transform: translateY(-10px);
+}
+
+.value-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px #00ffff);
+}
+
+.value-card h3 {
+  font-size: 1.3rem;
+  color: #00ffff;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.value-card p {
+  color: #b0b0b0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title-name {
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .title-line {
+    font-size: 1rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .chapter {
+    padding-left: 4rem;
+  }
+
+  .chapter-number {
+    font-size: 3rem;
+  }
+
+  .chapter-title {
+    font-size: 1.5rem;
+  }
+
+  .chapter-text {
+    font-size: 1rem;
+  }
+
+  .chapter.memorial {
+    padding: 2rem;
+    padding-left: 4rem;
+  }
+
+  .memorial-quote {
+    font-size: 1.1rem;
+    padding: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+}
