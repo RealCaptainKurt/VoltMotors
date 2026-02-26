@@ -1,120 +1,73 @@
-# VoltMotors
+# React + TypeScript + Vite
 
-A cyberpunk-themed electric vehicle showcase built with React and ASP.NET Core.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Architecture
+Currently, two official plugins are available:
 
-The application is configured as a **single-unit deployment** where:
-- The backend (ASP.NET Core) serves the built frontend as static files
-- No separate frontend dev server required
-- Single command to run the entire application
-- Ready for single webapp deployment
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Quick Start
+## React Compiler
 
-### First Time Setup
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-1. **Build the frontend:**
-   ```bash
-   # Windows (Command Prompt)
-   build-frontend.cmd
+## Expanding the ESLint configuration
 
-   # Or PowerShell
-   .\build-frontend.ps1
-   ```
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-2. **Run the backend:**
-   ```bash
-   cd VoltMotors.Server
-   dotnet run
-   ```
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-3. **Open your browser:**
-   - Navigate to `http://localhost:5276`
-   - The backend serves both API (`/api/*`) and frontend files
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-### Development Workflow
-
-**When you make frontend changes:**
-
-1. Rebuild the frontend:
-   ```bash
-   build-frontend.cmd
-   ```
-
-2. Refresh your browser (Ctrl+F5)
-
-**When you make backend changes:**
-
-The backend will auto-reload thanks to hot reload.
-
-### Project Structure
-
-```
-VoltMotors/
-├── VoltMotors.Client/          # React frontend
-│   ├── src/
-│   │   ├── pages/
-│   │   │   ├── Home/          # Cyberpunk home page
-│   │   │   └── Cars/          # Electric fleet showcase
-│   │   ├── assets/photos/     # Car images
-│   │   └── App.tsx
-│   └── dist/                   # Built files (gitignored)
-│
-├── VoltMotors.Server/          # ASP.NET Core backend
-│   ├── Controllers/            # API endpoints
-│   ├── Models/                 # Data models
-│   ├── wwwroot/                # Served static files (auto-generated)
-│   └── Program.cs
-│
-├── build-frontend.cmd          # Windows build script
-└── build-frontend.ps1          # PowerShell build script
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## Deployment
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-### Publishing for Production
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-```bash
-cd VoltMotors.Server
-dotnet publish -c Release -o ./publish
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-The publish process will automatically:
-1. Install frontend dependencies
-2. Build the React app
-3. Copy frontend files to wwwroot
-4. Create a single deployable package
-
-### Deploy to Azure/IIS
-
-The `publish` folder contains everything needed:
-- Upload the entire folder to your hosting service
-- Configure to run the VoltMotors.Server.dll
-- No additional frontend hosting required
-
-## Features
-
-- **Cyberpunk Design**: Neon blue aesthetics with chunky geometric shapes
-- **Electric Fleet**: 6 vehicles with detailed specs
-- **Modular Cards**: Click any car for detailed specifications
-- **Responsive**: Adapts from mobile to ultra-wide screens
-- **Single Deployment**: One webapp instance serves everything
-
-## Tech Stack
-
-- **Frontend**: React 19, TypeScript, Vite, React Router
-- **Backend**: ASP.NET Core 9, C#
-- **Styling**: Pure CSS with cyberpunk animations
-
-## API Endpoints
-
-- `GET /api/cars` - List all vehicles
-- `GET /api/cars/{id}` - Get specific vehicle
-- `POST /api/cars` - Add new vehicle
-- `PUT /api/cars/{id}` - Update vehicle
-- `DELETE /api/cars/{id}` - Remove vehicle
-
----
-
-⚡ Built with Claude Code

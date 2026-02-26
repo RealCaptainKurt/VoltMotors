@@ -1,14 +1,7 @@
-import { useState, useEffect } from 'react';
-import { api } from '../../services/api';
+import { useState } from 'react';
+import { cars } from '../../data/cars';
+import type { Car } from '../../types';
 import './Customize.css';
-
-interface Car {
-  id: string;
-  model: string;
-  tagline?: string;
-  imageUrl?: string;
-  price?: number;
-}
 
 interface ColorOption {
   name: string;
@@ -56,61 +49,20 @@ function fmt(n: number) {
 }
 
 export default function Customize() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const [selectedCar, setSelectedCar] = useState<Car | null>(null);
+  const [selectedCar, setSelectedCar] = useState<Car>(cars[0]);
   const [selectedColor, setSelectedColor] = useState<ColorOption>(COLORS[0]);
   const [selectedEngine, setSelectedEngine] = useState<PackageOption>(ENGINES[0]);
   const [selectedWheels, setSelectedWheels] = useState<PackageOption>(WHEELS[0]);
   const [selectedInterior, setSelectedInterior] = useState<PackageOption>(INTERIORS[0]);
   const [ordered, setOrdered] = useState(false);
 
-  useEffect(() => {
-    api.getCars()
-      .then((data: any[]) => {
-        setCars(data);
-        if (data.length > 0) setSelectedCar(data[0]);
-      })
-      .catch((err: Error) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
-
-  const basePrice = selectedCar?.price ?? 0;
+  const basePrice = selectedCar.price;
   const totalPrice =
     basePrice +
     selectedColor.adder +
     selectedEngine.adder +
     selectedWheels.adder +
     selectedInterior.adder;
-
-  if (loading) {
-    return (
-      <div className="customize-page">
-        <div className="customize-background"><div className="customize-neon-grid"></div></div>
-        <div className="customize-content">
-          <div className="loading-container">
-            <div className="loading-spinner">⚡</div>
-            <div className="loading-text">LOADING CONFIGURATOR...</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="customize-page">
-        <div className="customize-background"><div className="customize-neon-grid"></div></div>
-        <div className="customize-content">
-          <div className="loading-container">
-            <div className="error-text">ERROR: {error}</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (ordered) {
     return (
@@ -124,7 +76,7 @@ export default function Customize() {
             <div className="confirm-details">
               <div className="confirm-row">
                 <span className="confirm-label">MODEL</span>
-                <span className="confirm-value">{selectedCar?.model}</span>
+                <span className="confirm-value">{selectedCar.model}</span>
               </div>
               <div className="confirm-row">
                 <span className="confirm-label">COLOR</span>
@@ -179,7 +131,7 @@ export default function Customize() {
                 {cars.map((car) => (
                   <button
                     key={car.id}
-                    className={`model-card ${selectedCar?.id === car.id ? 'selected' : ''}`}
+                    className={`model-card ${selectedCar.id === car.id ? 'selected' : ''}`}
                     onClick={() => setSelectedCar(car)}
                   >
                     {car.imageUrl && (
@@ -187,9 +139,7 @@ export default function Customize() {
                     )}
                     <div className="model-card-info">
                       <span className="model-card-name">{car.model}</span>
-                      {car.price && (
-                        <span className="model-card-price">FROM {fmt(car.price)}</span>
-                      )}
+                      <span className="model-card-price">FROM {fmt(car.price)}</span>
                     </div>
                   </button>
                 ))}
@@ -286,7 +236,7 @@ export default function Customize() {
           <aside className="summary-panel">
             <h2 className="summary-title">YOUR BUILD</h2>
 
-            {selectedCar?.imageUrl && (
+            {selectedCar.imageUrl && (
               <img
                 src={selectedCar.imageUrl}
                 alt={selectedCar.model}
@@ -300,7 +250,7 @@ export default function Customize() {
             <div className="summary-rows">
               <div className="summary-row">
                 <span className="summary-label">MODEL</span>
-                <span className="summary-value">{selectedCar?.model ?? '—'}</span>
+                <span className="summary-value">{selectedCar.model}</span>
               </div>
               <div className="summary-row">
                 <span className="summary-label">BASE</span>

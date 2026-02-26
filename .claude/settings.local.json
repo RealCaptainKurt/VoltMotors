@@ -5,7 +5,8 @@
       "Bash(powershell:*)",
       "Bash(cmd /c build-frontend.cmd:*)",
       "Bash(npm install)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(git ls-tree -r 0dfcc7e)"
     ]
   }
 }
