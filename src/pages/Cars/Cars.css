@@ -41,7 +41,7 @@
 .cars-content {
   position: relative;
   z-index: 1;
-  max-width: 1400px;
+  min-width: 100vw;
   margin: 0 auto;
   padding: 4rem 2rem;
 }

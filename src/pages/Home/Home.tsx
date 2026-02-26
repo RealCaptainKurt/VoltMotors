@@ -34,7 +34,7 @@ export default function Home() {
               <span className="button-glow"></span>
               EXPLORE VEHICLES
             </Link>
-            <Link to="/cars" className="cta-button secondary">
+            <Link to="/customize" className="cta-button secondary">
               CONFIGURE YOURS
             </Link>
           </div>
