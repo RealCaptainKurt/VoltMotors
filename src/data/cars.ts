@@ -1,0 +1,88 @@
+import type { Car } from '../types';
+
+export const cars: Car[] = [
+  {
+    id: '1',
+    model: 'NEXUS X1',
+    tagline: 'Raw power meets neon streets',
+    description:
+      'The NEXUS X1 redefines electric performance with its quantum-core drivetrain and reactive armor plating. Built for the urban sprawl, engineered for tomorrow\'s drivers.',
+    imageUrl: '/photos/Gemini_Air.png',
+    horsepower: 1000,
+    range: 500,
+    topSpeed: 200,
+    zeroToSixty: 2.1,
+    price: 89000,
+    year: 2025,
+  },
+  {
+    id: '2',
+    model: 'CIPHER GT',
+    tagline: 'Stealth in motion',
+    description:
+      'The CIPHER GT combines sleek aerodynamics with military-grade tech. Silent running mode and AI-assisted handling make this the ultimate night runner.',
+    imageUrl: '/photos/Gemini_Sedan_1.png',
+    horsepower: 850,
+    range: 450,
+    topSpeed: 185,
+    zeroToSixty: 2.8,
+    price: 72000,
+    year: 2025,
+  },
+  {
+    id: '3',
+    model: 'VOLT CRUISER',
+    tagline: 'Command the highway',
+    description:
+      'Engineered for long-haul dominance, the VOLT CRUISER features extended-range quantum batteries and adaptive suspension for maximum comfort at maximum velocity.',
+    imageUrl: '/photos/Gemini_SUV_1.png',
+    horsepower: 650,
+    range: 600,
+    topSpeed: 160,
+    zeroToSixty: 3.5,
+    price: 65000,
+    year: 2025,
+  },
+  {
+    id: '4',
+    model: 'APEX RUNNER',
+    tagline: 'Velocity unleashed',
+    description:
+      'Track-ready performance meets street legality. The APEX RUNNER\'s neural-link control system responds to your thoughts before your hands move.',
+    imageUrl: '/photos/Gemini_Sedan_2.png',
+    horsepower: 1200,
+    range: 400,
+    topSpeed: 220,
+    zeroToSixty: 1.9,
+    price: 125000,
+    year: 2025,
+  },
+  {
+    id: '5',
+    model: 'TITAN HAULER',
+    tagline: 'Unstoppable force',
+    description:
+      'The TITAN HAULER brings electric power to the working class. With massive torque and unbreakable cyber-steel construction, nothing stands in your way.',
+    imageUrl: '/photos/Gemini_Truck.png',
+    horsepower: 800,
+    range: 550,
+    topSpeed: 140,
+    zeroToSixty: 4.2,
+    price: 78000,
+    year: 2025,
+  },
+  {
+    id: '6',
+    model: 'PHANTOM SUV',
+    tagline: 'Luxury meets rebellion',
+    description:
+      'The PHANTOM SUV delivers executive comfort with street warrior capabilities. Adaptive terrain systems and reinforced chassis make every journey an adventure.',
+    imageUrl: '/photos/Gemini_SUV_2.png',
+    horsepower: 720,
+    range: 520,
+    topSpeed: 170,
+    zeroToSixty: 3.8,
+    price: 95000,
+    year: 2025,
+  },
+];
